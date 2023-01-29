@@ -19,7 +19,15 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
   const [step, setStep] = useState("situation")
 
   //! when handling edit mode, this should be set to the thought object
-  const [thoughtDetails, setThoughtDetails] = useState({})
+  const [thoughtDetails, setThoughtDetails] = useState({
+    situation: "",
+    thought: "",
+    emotions: "",
+    args: "",
+    counterArgs: "",
+    altThought: "",
+    altEmotions: "",
+  })
 
   const changeStep = (direction) => {
     const currentStepIndex = steps.indexOf(step)
@@ -32,13 +40,13 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
     setStep(steps[nextStepIndex])
   }
 
-  const handleSave = async (thought) => {
+  const handleSave = async () => {
+    const timestamp = Date.parse(new Date())
     const jsonVal = JSON.stringify({
-      situation: "test",
-      ...thought,
-      createdAt: new Date(),
+      ...thoughtDetails,
+      timestamp,
     })
-    await AsyncStorage.setItem("thoughts", jsonVal)
+    await AsyncStorage.setItem(`thought-${timestamp}`, jsonVal)
   }
 
   return (

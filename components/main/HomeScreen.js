@@ -3,7 +3,7 @@ import { Button, Text, View, StyleSheet } from "react-native"
 
 const HomeScreen = ({ setScreen }) => {
   return (
-    <View>
+    <View style={styles.homeScreenContainer}>
       <View style={styles.headerContainer}>
         <View>
           <Text style={styles.header}>CBTable</Text>
@@ -17,6 +17,9 @@ const HomeScreen = ({ setScreen }) => {
 }
 
 const styles = StyleSheet.create({
+  homeScreenContainer: {
+    flex: 1,
+  },
   header: {
     fontSize: 60,
     fontWeight: "bold",
