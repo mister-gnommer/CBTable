@@ -63,10 +63,14 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
       />
       <View style={styles.stepButtonsContainer}>
         <View style={styles.stepBtn}>
-          <Button title="<<" onPress={() => changeStep(-1)} />
+          {step !== steps[0] ? (
+            <Button title="poprzedni krok" onPress={() => changeStep(-1)} />
+          ) : null}
         </View>
         <View style={styles.stepBtn}>
-          <Button title=">>" onPress={() => changeStep(1)} />
+          {step !== steps[steps.length - 1] ? (
+            <Button title="następny krok" onPress={() => changeStep(1)} />
+          ) : null}
         </View>
       </View>
       <View style={globalStyles.footerContainer}>
