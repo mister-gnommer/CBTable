@@ -27,6 +27,8 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
     counterArgs: "",
     altThought: "",
     altEmotions: "",
+    emotionsIntensity: undefined,
+    altEmotionsIntensity: undefined,
   })
 
   const changeStep = (direction) => {

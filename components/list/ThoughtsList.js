@@ -17,6 +17,7 @@ const ThoughtsList = () => {
         const thoughtsParsed = thoughts.map((thought) => {
           return JSON.parse(thought[1])
         })
+        console.log("thoughtsParsed", thoughtsParsed)
         setThoughts(thoughtsParsed)
       } catch (err) {
         console.log("err", err)
