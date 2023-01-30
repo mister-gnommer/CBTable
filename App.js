@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 30,
-    paddingBottom: 30,
+    padding: 30,
   },
 })
