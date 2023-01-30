@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from "react-native"
 import { HomeScreen } from "./components/main/HomeScreen"
 import { EditScreen } from "./components/edit/EditScreen"
 import { ThoughtsList } from "./components/list/ThoughtsList"
+import { globalStyles } from "./globalStyles"
 
 /* 
 TODO:
@@ -35,7 +36,29 @@ export default function App() {
           <EditScreen setScreen={setScreen} thoughtSelected={thoughtSelected} />
         )
       default:
-        return <HomeScreen setScreen={setScreen} />
+        return (
+          <View style={{ margin: 10 }}>
+            <Text style={globalStyles.text}>
+              Nastąpił niewyobrażalny błąd tej wspaniałej aplikacji. Zaleca się
+              umieszczenie urządzenia w pojemniku ze stopu miedzi i żelaza,
+              ustawionym pośrodku pustego pokoju. Na ścianach pokoju powinny
+              znajdować się lustra a na podłodze należy rozsypać mieszankę
+              składającą się w równych proporcjach z soli, miału węglowego oraz
+              mąki (koniecznie typ 480 lub drobniejsza).
+            </Text>
+            <Text style={globalStyles.text}>
+              Po zamknięciu pojemnika należy wyjść z pokoju poruszając się w
+              taki sposób, aby nie przejść więcej niż pięć kroków w jedną stronę
+              na raz. Pod absolutnie żadnym pozorem nie wolno iść w stronę
+              północno-wschodnią! Po wyjściu pokój zaplombować korzystając z
+              wosku pszczelego zebranego o północy pod krwawym księżycem.
+            </Text>
+            <Text style={globalStyles.text}>
+              Ewentualnie można też sprawdzić kod aplikacji, bo pewnie gdzieś
+              jest jakaś literówka.
+            </Text>
+          </View>
+        )
     }
   }
 
