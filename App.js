@@ -24,7 +24,12 @@ export default function App() {
   const renderScreen = () => {
     switch (screen) {
       case "home":
-        return <HomeScreen setScreen={setScreen} />
+        return (
+          <>
+            <HomeScreen setScreen={setScreen} />
+            <ThoughtsList />
+          </>
+        )
       case "edit":
         return (
           <EditScreen setScreen={setScreen} thoughtSelected={thoughtSelected} />
@@ -34,12 +39,7 @@ export default function App() {
     }
   }
 
-  return (
-    <View style={styles.container}>
-      {renderScreen()}
-      <ThoughtsList />
-    </View>
-  )
+  return <View style={styles.container}>{renderScreen()}</View>
 }
 
 const styles = StyleSheet.create({
