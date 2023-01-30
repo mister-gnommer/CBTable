@@ -9,9 +9,11 @@ const globalStyles = StyleSheet.create({
     color: "#ffffff",
   },
   footerContainer: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignContent: "space-around",
+    // flex: 1,
+    // maxHeight: 50,
+    width: "100%",
+    justifyContent: "space-around",
+
     flexDirection: "row",
   },
 })
