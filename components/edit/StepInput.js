@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native"
 import Slider from "@react-native-community/slider"
 
 import { globalStyles } from "../../globalStyles"
-import { stepsDescriptions } from "./stepsDescriptions"
+import { stepsDescriptions } from "../../stepsDescriptions"
 
 const StepInput = ({ step, setThoughtDetails, thoughtDetails }) => {
   const handleInputChange = (text) => {

@@ -8,6 +8,10 @@ const globalStyles = StyleSheet.create({
     fontSize: 40,
     color: "#ffffff",
   },
+  sectionHeader: {
+    fontSize: 20,
+    color: "#ffffff",
+  },
   footerContainer: {
     // flex: 1,
     // maxHeight: 50,

@@ -6,6 +6,7 @@ import { HomeScreen } from "./components/main/HomeScreen"
 import { EditScreen } from "./components/edit/EditScreen"
 import { ThoughtsList } from "./components/list/ThoughtsList"
 import { globalStyles } from "./globalStyles"
+import { DetailsScreen } from "./components/details/DetailsScreen"
 
 /* 
 TODO:
@@ -19,46 +20,54 @@ TODO:
 export default function App() {
   const [screen, setScreen] = useState("home")
 
-  // set to thought id/object to edit:
+  // set to thought object to show details
   const [thoughtSelected, setThoughtSelected] = useState(null)
 
+  const handleShowDetails = (thought) => {
+    setThoughtSelected(thought)
+    setScreen("details")
+  }
+
   const renderScreen = () => {
-    switch (screen) {
-      case "home":
-        return (
-          <>
-            <HomeScreen setScreen={setScreen} />
-            <ThoughtsList />
-          </>
-        )
-      case "edit":
-        return (
-          <EditScreen setScreen={setScreen} thoughtSelected={thoughtSelected} />
-        )
-      default:
-        return (
-          <View style={{ margin: 10 }}>
-            <Text style={globalStyles.text}>
-              Nastąpił niewyobrażalny błąd tej wspaniałej aplikacji. Zaleca się
-              umieszczenie urządzenia w pojemniku ze stopu miedzi i żelaza,
-              ustawionym pośrodku pustego pokoju. Na ścianach pokoju powinny
-              znajdować się lustra a na podłodze należy rozsypać mieszankę
-              składającą się w równych proporcjach z soli, miału węglowego oraz
-              mąki (koniecznie typ 480 lub drobniejsza).
-            </Text>
-            <Text style={globalStyles.text}>
-              Po zamknięciu pojemnika należy wyjść z pokoju poruszając się w
-              taki sposób, aby nie przejść więcej niż pięć kroków w jedną stronę
-              na raz. Pod absolutnie żadnym pozorem nie wolno iść w stronę
-              północno-wschodnią! Po wyjściu pokój zaplombować korzystając z
-              wosku pszczelego zebranego o północy pod krwawym księżycem.
-            </Text>
-            <Text style={globalStyles.text}>
-              Ewentualnie można też sprawdzić kod aplikacji, bo pewnie gdzieś
-              jest jakaś literówka.
-            </Text>
-          </View>
-        )
+    if (screen === "home") {
+      return (
+        <>
+          <HomeScreen setScreen={setScreen} />
+          <ThoughtsList handleShowDetails={handleShowDetails} />
+        </>
+      )
+    }
+    if (screen === "edit") {
+      return (
+        <EditScreen setScreen={setScreen} thoughtSelected={thoughtSelected} />
+      )
+    }
+    if (screen === "details") {
+      return <DetailsScreen thought={thoughtSelected} setScreen={setScreen} />
+    } else {
+      return (
+        <View style={{ margin: 10 }}>
+          <Text style={globalStyles.text}>
+            Nastąpił niewyobrażalny błąd tej wspaniałej aplikacji. Zaleca się
+            umieszczenie urządzenia w pojemniku ze stopu miedzi i żelaza,
+            ustawionym pośrodku pustego pokoju. Na ścianach pokoju powinny
+            znajdować się lustra a na podłodze należy rozsypać mieszankę
+            składającą się w równych proporcjach z soli, miału węglowego oraz
+            mąki (koniecznie typ 480 lub drobniejsza).
+          </Text>
+          <Text style={globalStyles.text}>
+            Po zamknięciu pojemnika należy wyjść z pokoju poruszając się w taki
+            sposób, aby nie przejść więcej niż pięć kroków w jedną stronę na
+            raz. Pod absolutnie żadnym pozorem nie wolno iść w stronę
+            północno-wschodnią! Po wyjściu pokój zaplombować korzystając z wosku
+            pszczelego zebranego o północy pod krwawym księżycem.
+          </Text>
+          <Text style={globalStyles.text}>
+            Ewentualnie można też sprawdzić kod aplikacji, bo pewnie gdzieś jest
+            jakaś literówka.
+          </Text>
+        </View>
+      )
     }
   }
 

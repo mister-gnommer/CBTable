@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import { View, Text, StyleSheet, FlatList } from "react-native"
+import { View, Text, StyleSheet, FlatList, Pressable } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import dayjs from "dayjs"
 
 import { globalStyles } from "../../globalStyles"
 
-const ThoughtsList = () => {
+const ThoughtsList = ({ handleShowDetails }) => {
   const [thoughts, setThoughts] = useState([])
 
   useEffect(() => {
@@ -35,7 +35,12 @@ const ThoughtsList = () => {
           {/* <Text style={styles.situationText}>test</Text> */}
           <FlatList
             data={thoughts}
-            renderItem={({ item }) => <ThoughtLine thought={item} />}
+            renderItem={({ item }) => (
+              <ThoughtLine
+                thought={item}
+                handleShowDetails={handleShowDetails}
+              />
+            )}
             keyExtractor={(item) => item.timestamp || Math.random().toString()}
           />
         </>
@@ -46,19 +51,21 @@ const ThoughtsList = () => {
   return <View style={styles.listContainer}>{renderThoughts()}</View>
 }
 
-const ThoughtLine = ({ thought }) => {
+const ThoughtLine = ({ thought, handleShowDetails }) => {
   return (
-    <View style={styles.thoughtContainer}>
-      <Text style={styles.situationText}>{thought.situation}</Text>
-      <View style={styles.dateContainer}>
-        <Text style={styles.dateText}>
-          {dayjs(thought.timestamp).format("YYYY-MM-DD")}
-        </Text>
-        <Text style={styles.dateText}>
-          {dayjs(thought.timestamp).format("HH:mm")}
-        </Text>
+    <Pressable onPress={() => handleShowDetails(thought)}>
+      <View style={styles.thoughtContainer}>
+        <Text style={styles.situationText}>{thought.situation}</Text>
+        <View style={styles.dateContainer}>
+          <Text style={styles.dateText}>
+            {dayjs(thought.timestamp).format("YYYY-MM-DD")}
+          </Text>
+          <Text style={styles.dateText}>
+            {dayjs(thought.timestamp).format("HH:mm")}
+          </Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   )
 }
 
