@@ -1,12 +1,17 @@
 import React from "react"
 import { Button, Text, View, StyleSheet } from "react-native"
 
-const HomeScreen = ({ setScreen }) => {
+const HomeScreen = ({ setScreen, setShowDevTools }) => {
   return (
     <View style={styles.homeScreenContainer}>
       <View style={styles.headerContainer}>
         <View>
-          <Text style={styles.header}>CBTable</Text>
+          <Text
+            style={styles.header}
+            onPress={() => setShowDevTools((prev) => !prev)}
+          >
+            CBTable
+          </Text>
         </View>
         <View style={styles.addBtn}>
           <Button title="Dodaj" onPress={() => setScreen("edit")} />

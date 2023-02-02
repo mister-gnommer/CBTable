@@ -7,6 +7,7 @@ import { EditScreen } from "./components/edit/EditScreen"
 import { ThoughtsList } from "./components/list/ThoughtsList"
 import { globalStyles } from "./globalStyles"
 import { DetailsScreen } from "./components/details/DetailsScreen"
+import { DevComponent } from "./components/dev/DevComponent"
 
 /* 
 TODO:
@@ -23,6 +24,8 @@ export default function App() {
   // set to thought object to show details
   const [thoughtSelected, setThoughtSelected] = useState(null)
 
+  const [showDevTools, setShowDevTools] = useState(false)
+
   const handleShowDetails = (thought) => {
     setThoughtSelected(thought)
     setScreen("details")
@@ -32,7 +35,7 @@ export default function App() {
     if (screen === "home") {
       return (
         <>
-          <HomeScreen setScreen={setScreen} />
+          <HomeScreen setScreen={setScreen} setShowDevTools={setShowDevTools} />
           <ThoughtsList handleShowDetails={handleShowDetails} />
         </>
       )
@@ -71,7 +74,12 @@ export default function App() {
     }
   }
 
-  return <View style={styles.container}>{renderScreen()}</View>
+  return (
+    <>
+      <View style={styles.container}>{renderScreen()}</View>
+      {showDevTools ? <DevComponent /> : null}
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
