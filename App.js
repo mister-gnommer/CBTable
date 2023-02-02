@@ -25,6 +25,7 @@ export default function App() {
   const [thoughtSelected, setThoughtSelected] = useState(null)
 
   const [showDevTools, setShowDevTools] = useState(false)
+  const [refreshCounter, setRefreshCounter] = useState(0)
 
   const handleShowDetails = (thought) => {
     setThoughtSelected(thought)
@@ -36,7 +37,10 @@ export default function App() {
       return (
         <>
           <HomeScreen setScreen={setScreen} setShowDevTools={setShowDevTools} />
-          <ThoughtsList handleShowDetails={handleShowDetails} />
+          <ThoughtsList
+            handleShowDetails={handleShowDetails}
+            refreshCounter={refreshCounter}
+          />
         </>
       )
     }
@@ -77,7 +81,9 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>{renderScreen()}</View>
-      {showDevTools ? <DevComponent /> : null}
+      {showDevTools ? (
+        <DevComponent setRefreshCounter={setRefreshCounter} />
+      ) : null}
     </>
   )
 }

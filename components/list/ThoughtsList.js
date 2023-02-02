@@ -5,7 +5,7 @@ import dayjs from "dayjs"
 
 import { globalStyles } from "../../globalStyles"
 
-const ThoughtsList = ({ handleShowDetails }) => {
+const ThoughtsList = ({ handleShowDetails, refreshCounter }) => {
   const [thoughts, setThoughts] = useState([])
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const ThoughtsList = ({ handleShowDetails }) => {
       }
     }
     getThoughts()
-  }, [])
+  }, [refreshCounter])
 
   const renderThoughts = () => {
     if (thoughts.length === 0) {
