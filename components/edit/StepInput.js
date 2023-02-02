@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
   stepContainer: {
     justifyContent: "flex-start",
     flex: 4,
-    // backgroundColor: "red",
+    width: "100%",
+    // backgroundColor: "yellow",
   },
   stepHeader: {
     fontSize: 30,
@@ -66,10 +67,14 @@ const styles = StyleSheet.create({
   textInputContainer: {
     backgroundColor: "#333",
     maxHeight: 80,
-    flex: 3,
+    flex: 4,
     marginTop: 20,
+    minHeight: 40,
+    // backgroundColor: "red",
   },
-  sliderContainer: {},
+  sliderContainer: {
+    // backgroundColor: "blue",
+  },
   textInput: {
     color: "white",
   },

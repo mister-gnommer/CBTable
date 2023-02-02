@@ -53,11 +53,12 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
 
   return (
     <>
-      <View style={{ flex: 2 }}>
+      <View style={{ flex: 1 }}>
         <Text style={globalStyles.screenHeader}>
           {thoughtSelected ? "Edycja" : "Nowa myśl"}
         </Text>
       </View>
+
       <StepInput
         step={step}
         setThoughtDetails={setThoughtDetails}
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
   stepButtonsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginVertical: 50,
+    marginVertical: 16,
   },
   stepBtn: {
     width: 100,
