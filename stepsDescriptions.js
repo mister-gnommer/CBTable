@@ -1,32 +1,31 @@
 const stepsDescriptions = {
   situation: {
     title: "Sytuacja",
-    description: "Opisz sytuację, w której pojawiła się myśl.",
+    description: "Kto/co zmieniło mój stan?",
   },
   thought: {
     title: "Myśl",
-    description: "Opisz myśl, która pojawiła się w Twojej głowie.",
+    description: "Jakie myśli/obrazy pojawiły się w tej sytuacji?",
   },
   emotions: {
     title: "Emocje",
-    description: "Jakie emocje pojawiły się w Twojej głowie?",
+    description: "Jakie emocje i reakcje wywołała ta sytuacja?",
   },
   args: {
     title: "Argumenty",
-    description: "Jakie argumenty przemawiają za Twoją myślą?",
+    description: "Jakie argumenty potwierdzają tą myśl?",
   },
   counterArgs: {
     title: "Argumenty przeciw",
-    description: "Jakie argumenty przemawiają przeciw Twojej myśli?",
+    description: "Jakie argumenty podważają tą myśl?",
   },
   altThought: {
     title: "Alternatywna myśl",
-    description: "Jaką alternatywną myśl możesz sobie wyobrazić?",
+    description: "Inne, bardziej racjonalne interpretacje sytuacji",
   },
   altEmotions: {
     title: "Alternatywne emocje",
-    description:
-      "Jakie emocje pojawiłyby się w Twojej głowie, gdybyś miał inną myśl?",
+    description: "Po uwzględnieniu argumentów przeciw.",
   },
 }
 export { stepsDescriptions }
