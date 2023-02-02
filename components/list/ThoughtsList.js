@@ -17,7 +17,12 @@ const ThoughtsList = ({ handleShowDetails }) => {
         const thoughtsParsed = thoughts.map((thought) => {
           return JSON.parse(thought[1])
         })
-        console.log("thoughtsParsed", thoughtsParsed)
+
+        // sort thoughts by timestamp
+        thoughtsParsed.sort((a, b) => {
+          return b.timestamp - a.timestamp
+        })
+
         setThoughts(thoughtsParsed)
       } catch (err) {
         console.log("err", err)
