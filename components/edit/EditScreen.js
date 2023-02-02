@@ -49,6 +49,7 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
       timestamp,
     })
     await AsyncStorage.setItem(`thought-${timestamp}`, jsonVal)
+    setScreen("home")
   }
 
   return (
