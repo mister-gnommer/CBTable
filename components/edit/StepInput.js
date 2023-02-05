@@ -34,12 +34,33 @@ const StepInput = ({ step, setThoughtDetails, thoughtDetails }) => {
     }
   }
 
+  // show user what he entered in appropiate step
+  const renderHint = () => {
+    const hintsDict = {
+      thought: "situation",
+      emotions: "situation",
+      args: "thought",
+      counterArgs: "thought",
+      altThought: "situation",
+      altEmotions: "counterArgs",
+    }
+
+    if (thoughtDetails[hintsDict[step]]) {
+      return (
+        <Text style={[globalStyles.text, styles.hintText]}>
+          "{thoughtDetails[hintsDict[step]]}"
+        </Text>
+      )
+    }
+  }
+
   return (
     <View style={styles.stepContainer}>
       <Text style={styles.stepHeader}>{stepsDescriptions[step].title}</Text>
       <Text style={globalStyles.text}>
         {stepsDescriptions[step].description}
       </Text>
+      {renderHint()}
       <View style={styles.textInputContainer}>
         <TextInput
           style={styles.textInput}
@@ -78,6 +99,11 @@ const styles = StyleSheet.create({
   },
   textInput: {
     color: "white",
+  },
+  hintText: {
+    color: "#999",
+    fontStyle: "italic",
+    marginTop: 10,
   },
 })
 
