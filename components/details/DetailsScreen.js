@@ -5,7 +5,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { globalStyles } from "../../globalStyles"
 import { stepsDescriptions } from "../../stepsDescriptions"
 
-const DetailsScreen = ({ thought, setScreen }) => {
+const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
+  const handleGoBack = () => {
+    setScreen("home")
+    setThoughtSelected(null)
+  }
+
   const handleDeletingThought = async () => {
     try {
       await AsyncStorage.removeItem(`thought-${thought.timestamp}`)
@@ -36,9 +41,9 @@ const DetailsScreen = ({ thought, setScreen }) => {
         {renderThoughtDetails(thought)}
       </View>
       <View style={globalStyles.footerContainer}>
-        <Button title="Wróć" onPress={() => setScreen("home")} />
+        <Button title="Wróć" onPress={handleGoBack} />
         <Button title="Usuń" onPress={showDeleteAlert} />
-        <Button title="Edytuj" onPress={() => setScreen("home")} />
+        <Button title="Edytuj" onPress={() => setScreen("edit")} />
       </View>
     </>
   )

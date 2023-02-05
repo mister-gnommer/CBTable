@@ -3,7 +3,7 @@ import { Button, View } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { generateThought } from "./fixtures"
 
-const DevComponent = ({ setRefreshCounter }) => {
+const DevComponent = ({ setRefreshCounter, thoughtSelected }) => {
   const logAllThoughts = async () => {
     const keys = await AsyncStorage.getAllKeys()
     const thoughts = await AsyncStorage.multiGet(keys)
@@ -30,7 +30,11 @@ const DevComponent = ({ setRefreshCounter }) => {
         title="console.log all thoughts keys"
         onPress={logAllThoughtsKeys}
       />
-      <Button title="generuj fixtures" onPress={addFixture} />
+      <Button title="make fixture" onPress={addFixture} />
+      <Button
+        title="console.log thoughtsSelected"
+        onPress={() => console.log(thoughtSelected)}
+      />
     </View>
   )
 }

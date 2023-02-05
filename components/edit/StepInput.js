@@ -27,6 +27,7 @@ const StepInput = ({ step, setThoughtDetails, thoughtDetails }) => {
             minimumTrackTintColor="#999"
             maximumTrackTintColor="#999"
             onSlidingComplete={handleSliderInput}
+            value={thoughtDetails[`${step}Intensity`] || 1}
           />
         </View>
       )

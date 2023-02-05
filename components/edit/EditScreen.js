@@ -15,11 +15,10 @@ const steps = [
   "altEmotions",
 ]
 
-const EditScreen = ({ setScreen, thoughtSelected }) => {
+const EditScreen = ({ setScreen, thoughtSelected, setThoughtSelected }) => {
   const [step, setStep] = useState("situation")
 
-  //! when handling edit mode, this should be set to the thought object
-  const [thoughtDetails, setThoughtDetails] = useState({
+  const newThought = {
     situation: "",
     thought: "",
     emotions: "",
@@ -29,7 +28,15 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
     altEmotions: "",
     emotionsIntensity: undefined,
     altEmotionsIntensity: undefined,
-  })
+  }
+  const [thoughtDetails, setThoughtDetails] = useState(
+    thoughtSelected || newThought
+  )
+
+  const handleGoBack = () => {
+    setScreen("home")
+    setThoughtSelected(null)
+  }
 
   const changeStep = (direction) => {
     const currentStepIndex = steps.indexOf(step)
@@ -43,7 +50,8 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
   }
 
   const handleSave = async () => {
-    const timestamp = Date.parse(new Date())
+    // when editing, use the same timestamp, else create new one
+    const timestamp = thoughtSelected?.timestamp || Date.parse(new Date())
     const jsonVal = JSON.stringify({
       ...thoughtDetails,
       timestamp,
@@ -78,7 +86,7 @@ const EditScreen = ({ setScreen, thoughtSelected }) => {
         </View>
       </View>
       <View style={globalStyles.footerContainer}>
-        <Button title="Anuluj" onPress={() => setScreen("home")} />
+        <Button title="Anuluj" onPress={handleGoBack} />
         <Button title="?" onPress={() => console.log(thoughtDetails)} />
         <Button title="Zapisz" onPress={() => handleSave()} />
       </View>

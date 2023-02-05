@@ -46,11 +46,21 @@ export default function App() {
     }
     if (screen === "edit") {
       return (
-        <EditScreen setScreen={setScreen} thoughtSelected={thoughtSelected} />
+        <EditScreen
+          setScreen={setScreen}
+          thoughtSelected={thoughtSelected}
+          setThoughtSelected={setThoughtSelected}
+        />
       )
     }
     if (screen === "details") {
-      return <DetailsScreen thought={thoughtSelected} setScreen={setScreen} />
+      return (
+        <DetailsScreen
+          thought={thoughtSelected}
+          setScreen={setScreen}
+          setThoughtSelected={setThoughtSelected}
+        />
+      )
     } else {
       return (
         <View style={{ margin: 10 }}>
@@ -82,7 +92,10 @@ export default function App() {
     <>
       <View style={styles.container}>{renderScreen()}</View>
       {showDevTools ? (
-        <DevComponent setRefreshCounter={setRefreshCounter} />
+        <DevComponent
+          setRefreshCounter={setRefreshCounter}
+          thoughtSelected={thoughtSelected}
+        />
       ) : null}
     </>
   )
