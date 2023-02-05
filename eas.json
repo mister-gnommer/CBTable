@@ -1,0 +1,31 @@
+{
+  "cli": {
+    "version": ">= 3.5.1"
+  },
+  "build": {
+    "dev": {
+      "developmentClient": true,
+
+      "ios": {
+        "resourceClass": "m1-medium"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
+    },
+    "production": {
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
