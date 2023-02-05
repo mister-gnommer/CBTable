@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet } from "react-native"
+import { View, Text, TextInput, StyleSheet, Image } from "react-native"
 import Slider from "@react-native-community/slider"
 
 import { globalStyles } from "../../globalStyles"
@@ -20,15 +20,26 @@ const StepInput = ({ step, setThoughtDetails, thoughtDetails }) => {
       return (
         <View style={styles.sliderContainer}>
           <Text style={globalStyles.text}>oceń natężenie:</Text>
-          <Slider
-            minimumValue={1}
-            maximumValue={10}
-            step={1}
-            minimumTrackTintColor="#999"
-            maximumTrackTintColor="#999"
-            onSlidingComplete={handleSliderInput}
-            value={thoughtDetails[`${step}Intensity`] || 1}
-          />
+          <View style={styles.innerSliderContainer}>
+            <Image
+              source={require("../../assets/water.png")}
+              style={styles.icon}
+            />
+            <Slider
+              minimumValue={1}
+              maximumValue={10}
+              step={1}
+              minimumTrackTintColor="#999"
+              maximumTrackTintColor="#999"
+              onSlidingComplete={handleSliderInput}
+              value={thoughtDetails[`${step}Intensity`] || 1}
+              style={styles.slider}
+            />
+            <Image
+              source={require("../../assets/fire.png")}
+              style={styles.icon}
+            />
+          </View>
         </View>
       )
     }
@@ -83,7 +94,8 @@ const styles = StyleSheet.create({
     // backgroundColor: "yellow",
   },
   stepHeader: {
-    fontSize: 30,
+    fontSize: 20,
+    fontWeight: "bold",
     color: "#ffffff",
   },
   textInputContainer: {
@@ -91,19 +103,42 @@ const styles = StyleSheet.create({
     maxHeight: 80,
     flex: 4,
     marginTop: 20,
-    minHeight: 40,
+    minHeight: 30,
     // backgroundColor: "red",
   },
   sliderContainer: {
-    // backgroundColor: "blue",
+    // backgroundColor: "red",
+    flex: 1,
+    width: "100%",
+    alignContent: "flex-start",
+    justifyContent: "flex-start",
+  },
+  innerSliderContainer: {
+    // backgroundColor: "green",
+    flex: 1,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+  },
+  slider: {
+    flexGrow: 1,
+    marginTop: 6,
   },
   textInput: {
+    // backgroundColor: "lightblue",
     color: "white",
   },
   hintText: {
     color: "#999",
     fontStyle: "italic",
-    marginTop: 10,
+    marginTop: 5,
+  },
+
+  icon: {
+    // backgroundColor: "lightblue",
+    width: 30,
+    height: 30,
   },
 })
 

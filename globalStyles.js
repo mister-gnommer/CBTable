@@ -5,7 +5,7 @@ const globalStyles = StyleSheet.create({
     color: "#ffffff",
   },
   screenHeader: {
-    fontSize: 40,
+    fontSize: 30,
     color: "#ffffff",
   },
   sectionHeader: {
