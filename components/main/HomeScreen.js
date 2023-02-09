@@ -1,5 +1,6 @@
 import React from "react"
 import { Button, Text, View, StyleSheet } from "react-native"
+import { MyButton } from "../utils/Button"
 
 const HomeScreen = ({ setScreen, setShowDevTools }) => {
   return (
@@ -14,7 +15,7 @@ const HomeScreen = ({ setScreen, setShowDevTools }) => {
           </Text>
         </View>
         <View style={styles.addBtn}>
-          <Button title="Dodaj" onPress={() => setScreen("edit")} />
+          <MyButton title="Dodaj" onPress={() => setScreen("edit")} />
         </View>
       </View>
     </View>
