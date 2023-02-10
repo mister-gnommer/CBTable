@@ -16,7 +16,7 @@ const globalStyles = StyleSheet.create({
     // flex: 1,
     // maxHeight: 50,
     width: "100%",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
 
     flexDirection: "row",
   },

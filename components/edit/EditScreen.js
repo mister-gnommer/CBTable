@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 
 import { globalStyles } from "../../globalStyles"
 import { StepInput } from "./StepInput"
+import { MyButton } from "../utils/Button"
 
 const steps = [
   "situation",
@@ -73,32 +74,36 @@ const EditScreen = ({ setScreen, thoughtSelected, setThoughtSelected }) => {
         setThoughtDetails={setThoughtDetails}
         thoughtDetails={thoughtDetails}
       />
-      <View style={styles.stepButtonsContainer}>
-        <View style={styles.stepBtn}>
-          {step !== steps[0] ? (
-            <Button title="poprzedni krok" onPress={() => changeStep(-1)} />
-          ) : null}
-        </View>
-        <View style={styles.stepBtn}>
-          {step !== steps[steps.length - 1] ? (
-            <Button title="następny krok" onPress={() => changeStep(1)} />
-          ) : null}
-        </View>
-      </View>
       <View style={globalStyles.footerContainer}>
-        <Button title="Anuluj" onPress={handleGoBack} />
-        <Button title="?" onPress={() => console.log(thoughtDetails)} />
-        <Button title="Zapisz" onPress={() => handleSave()} />
+        <View style={styles.footerSmallBtnContainer}>
+          {step !== steps[0] ? (
+            <MyButton title="<" onPress={() => changeStep(-1)} />
+          ) : null}
+        </View>
+        <View style={styles.footerBtnContainer}>
+          <MyButton title="Anuluj" onPress={handleGoBack} variant="warning" />
+        </View>
+        <View style={styles.footerBtnContainer}>
+          <MyButton title="Zapisz" onPress={() => handleSave()} />
+        </View>
+        <View style={styles.footerSmallBtnContainer}>
+          {step !== steps[steps.length - 1] ? (
+            <MyButton title=">" onPress={() => changeStep(1)} />
+          ) : null}
+        </View>
       </View>
     </>
   )
 }
 
 const styles = StyleSheet.create({
-  stepButtonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 16,
+  footerBtnContainer: {
+    flex: 2,
+    alignItems: "center",
+  },
+  footerSmallBtnContainer: {
+    flex: 1,
+    alignItems: "center",
   },
   stepBtn: {
     width: 100,
