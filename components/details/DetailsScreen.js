@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 
 import { globalStyles } from "../../globalStyles"
 import { stepsDescriptions } from "../../stepsDescriptions"
+import { MyButton } from "../utils/Button"
 
 const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
   const handleGoBack = () => {
@@ -41,9 +42,9 @@ const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
         {renderThoughtDetails(thought)}
       </View>
       <View style={globalStyles.footerContainer}>
-        <Button title="Wróć" onPress={handleGoBack} />
-        <Button title="Usuń" onPress={showDeleteAlert} />
-        <Button title="Edytuj" onPress={() => setScreen("edit")} />
+        <MyButton title="Wróć" onPress={handleGoBack} />
+        <MyButton title="Usuń" onPress={showDeleteAlert} />
+        <MyButton title="Edytuj" onPress={() => setScreen("edit")} />
       </View>
     </>
   )
