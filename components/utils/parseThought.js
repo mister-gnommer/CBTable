@@ -2,7 +2,11 @@ import dayjs from "dayjs"
 import { stepsDescriptions } from "../../stepsDescriptions"
 
 const parseThought = (thought, addSeparator = true) => {
-  const thoughtJson = JSON.parse(thought)
+  let thoughtJson = thought
+
+  if (typeof thought === "string") {
+    thoughtJson = JSON.parse(thought)
+  }
 
   let thoughtStr = `Data: ${dayjs(thoughtJson.timestamp).format(
     "YYYY-MM-DD HH:mm:ss"

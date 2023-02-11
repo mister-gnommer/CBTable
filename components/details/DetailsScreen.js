@@ -1,10 +1,11 @@
 import React from "react"
-import { Alert, Button, StyleSheet, Text, View } from "react-native"
+import { Alert, Button, Share, StyleSheet, Text, View } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
 import { globalStyles } from "../../globalStyles"
 import { stepsDescriptions } from "../../stepsDescriptions"
 import { MyButton } from "../utils/Button"
+import { parseThought } from "../utils/parseThought"
 
 const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
   const handleGoBack = () => {
@@ -33,6 +34,15 @@ const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
     ])
   }
 
+  const handleShare = async () => {
+    try {
+      const thoughtString = parseThought(thought, false)
+      await Share.share({ message: thoughtString })
+    } catch (err) {
+      console.log("err", err)
+    }
+  }
+
   return (
     <>
       <View style={styles.headerContainer}>
@@ -43,8 +53,9 @@ const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
       </View>
       <View style={globalStyles.footerContainer}>
         <MyButton title="Wróć" onPress={handleGoBack} />
-        <MyButton title="Usuń" onPress={showDeleteAlert} />
+        <MyButton title="Usuń" variant="warning" onPress={showDeleteAlert} />
         <MyButton title="Edytuj" onPress={() => setScreen("edit")} />
+        <MyButton title="Ud." onPress={handleShare} />
       </View>
     </>
   )

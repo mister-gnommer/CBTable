@@ -32,7 +32,7 @@ const DevComponent = ({ setRefreshCounter, thoughtSelected }) => {
         .map((thought) => parseThought(thought[1]))
         .join("\n")
 
-      const result = await Share.share({ message: thoughtsString })
+      await Share.share({ message: thoughtsString })
     } catch (err) {
       console.log("err", err)
     }
