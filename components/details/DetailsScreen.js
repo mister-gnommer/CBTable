@@ -55,7 +55,10 @@ const DetailsScreen = ({ thought, setScreen, setThoughtSelected }) => {
         <MyButton title="Wróć" onPress={handleGoBack} />
         <MyButton title="Usuń" variant="warning" onPress={showDeleteAlert} />
         <MyButton title="Edytuj" onPress={() => setScreen("edit")} />
-        <MyButton title="Ud." onPress={handleShare} />
+        <MyButton
+          imageSrc={require("../../assets/share.png")}
+          onPress={handleShare}
+        />
       </View>
     </>
   )

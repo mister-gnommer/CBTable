@@ -1,9 +1,8 @@
-import { Pressable, StyleSheet, Text } from "react-native"
+import { Image, Pressable, StyleSheet, Text } from "react-native"
 import { colors } from "./colors"
 
-const MyButton = ({ title, onPress, variant }) => {
+const MyButton = ({ title, imageSrc, onPress, variant }) => {
   const getBackgroundColor = (isPressed) => {
-    console.log("isPressed: ", isPressed)
     switch (variant) {
       case "primary":
         return isPressed ? colors.primaryLight : colors.primary
@@ -26,7 +25,9 @@ const MyButton = ({ title, onPress, variant }) => {
       }}
       onPress={onPress}
     >
-      <Text style={styles.text}>{title}</Text>
+      {title ? <Text style={styles.text}>{title}</Text> : null}
+      {/* {imageSrc ? <Image source={imageSrc} style={styles.icon} /> : null} */}
+      {imageSrc ? <Image source={imageSrc} style={styles.icon} /> : null}
     </Pressable>
   )
 }
@@ -47,6 +48,11 @@ const styles = StyleSheet.create({
   },
   pressed: {
     backgroundColor: "#919090",
+  },
+  icon: {
+    // these values work for share.png
+    width: 18,
+    height: 20,
   },
 })
 
