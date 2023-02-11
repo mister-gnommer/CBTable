@@ -1,7 +1,8 @@
 import React from "react"
-import { Button, View } from "react-native"
+import { Button, Share, View } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { generateThought } from "./fixtures"
+import { parseThought } from "../utils/parseThought"
 
 const DevComponent = ({ setRefreshCounter, thoughtSelected }) => {
   const logAllThoughts = async () => {
@@ -23,6 +24,20 @@ const DevComponent = ({ setRefreshCounter, thoughtSelected }) => {
     setRefreshCounter((prev) => prev + 1)
   }
 
+  const handleShareAll = async () => {
+    try {
+      const keys = await AsyncStorage.getAllKeys()
+      const thoughts = await AsyncStorage.multiGet(keys)
+      const thoughtsString = thoughts
+        .map((thought) => parseThought(thought[1]))
+        .join("\n")
+
+      const result = await Share.share({ message: thoughtsString })
+    } catch (err) {
+      console.log("err", err)
+    }
+  }
+
   return (
     <View>
       <Button title="console.log all thoughts" onPress={logAllThoughts} />
@@ -35,6 +50,7 @@ const DevComponent = ({ setRefreshCounter, thoughtSelected }) => {
         title="console.log thoughtsSelected"
         onPress={() => console.log(thoughtSelected)}
       />
+      <Button title="share all" onPress={handleShareAll} />
     </View>
   )
 }
